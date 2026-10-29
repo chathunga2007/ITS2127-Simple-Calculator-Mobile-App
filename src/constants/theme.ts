@@ -1,65 +1,92 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://unistyl.es/), etc.
- */
+export interface AppTheme {
+  background: string;
+  surface: string;
+  displayBg: string;
+  textPrimary: string;
+  textSecondary: string;
+  textDim: string;
+  accent: string;
+  
+  // Buttons
+  btnNumber: string;
+  btnNumberActive: string;
+  btnNumberText: string;
+  
+  btnFunction: string;
+  btnFunctionActive: string;
+  btnFunctionText: string;
+  
+  btnOperator: string;
+  btnOperatorActive: string;
+  btnOperatorText: string;
+  
+  btnEqual: string;
+  btnEqualActive: string;
+  btnEqualText: string;
 
-import '@/global.css';
+  border: string;
+  card: string;
+}
 
-import { Platform } from 'react-native';
-
-export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
-  },
+export const Colors: Record<'dark' | 'light', AppTheme> = {
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
-  },
-} as const;
+    background: '#121214',
+    surface: '#1A1B20',
+    displayBg: '#16171C',
+    textPrimary: '#FFFFFF',
+    textSecondary: '#94A3B8',
+    textDim: '#64748B',
+    accent: '#F59E0B',
+    
+    // Buttons
+    btnNumber: '#23252B',
+    btnNumberActive: '#2E313A',
+    btnNumberText: '#F8FAFC',
+    
+    btnFunction: '#323640',
+    btnFunctionActive: '#3F4450',
+    btnFunctionText: '#60A5FA',
+    
+    btnOperator: '#F59E0B',
+    btnOperatorActive: '#D97706',
+    btnOperatorText: '#FFFFFF',
+    
+    btnEqual: '#3B82F6',
+    btnEqualActive: '#2563EB',
+    btnEqualText: '#FFFFFF',
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
-
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+    border: '#272A33',
+    card: '#1E2027',
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
+  light: {
+    background: '#F1F5F9',
+    surface: '#FFFFFF',
+    displayBg: '#FFFFFF',
+    textPrimary: '#0F172A',
+    textSecondary: '#64748B',
+    textDim: '#94A3B8',
+    accent: '#EA580C',
+    
+    // Buttons
+    btnNumber: '#FFFFFF',
+    btnNumberActive: '#E2E8F0',
+    btnNumberText: '#0F172A',
+    
+    btnFunction: '#E2E8F0',
+    btnFunctionActive: '#CBD5E1',
+    btnFunctionText: '#2563EB',
+    
+    btnOperator: '#F59E0B',
+    btnOperatorActive: '#D97706',
+    btnOperatorText: '#FFFFFF',
+    
+    btnEqual: '#3B82F6',
+    btnEqualActive: '#2563EB',
+    btnEqualText: '#FFFFFF',
 
-export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
-} as const;
+    border: '#E2E8F0',
+    card: '#FFFFFF',
+  },
+};
 
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export type ThemeMode = 'dark' | 'light';
